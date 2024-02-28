@@ -3,19 +3,23 @@ package com.example.lab
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Card
-import androidx.compose.material3.InputChip
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.Wallpapers
+import androidx.compose.ui.unit.dp
+import com.example.lab.ui.ObjectCard
 import com.example.lab.ui.theme.LabTheme
 
+@ExperimentalMaterial3Api
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,47 +29,31 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background,
                 ) {
-//                    Greeting("Android")
-                    LogIn()
-                    ObjectCard()
+                    Scaffold(
+                        floatingActionButton = {
+                            FloatingActionButton(onClick = { /*TODO*/ }) {
+                                Icon(
+                                    imageVector = Icons.Default.Add,
+                                    contentDescription = null
+                                )
+                            }
+                        }
+                    ) { values ->
+                        LazyColumn(contentPadding = values)  {
+                            items(20) {
+                                ObjectCard(
+                                    title = "asd",
+                                    description = "asd",
+                                    Modifier.padding(16.dp)
+                                )
+                            }
+                        }
+                    }
                 }
             }
         }
     }
 }
 
-@Composable
-fun LogIn() {
-    Column {
-        InputChip(selected = true, onClick = { /*TODO*/ }, label = { /*TODO*/ })
-        Text(text = "login")
-    }
-}
 
-@Composable
-fun ObjectCard() {
-    Card() {
-        Column {
-            Text(text = "asdasd")
-            Text(text = "aaaaaaaaaaaaaaaaaa")
-        }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true,
-    wallpaper = Wallpapers.GREEN_DOMINATED_EXAMPLE
-)
-@Composable
-fun GreetingPreview() {
-    LabTheme {
-        Greeting("Android")
-    }
-}
