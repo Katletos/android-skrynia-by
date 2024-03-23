@@ -1,4 +1,4 @@
-package com.example.lab.ui
+package com.example.lab.ad
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -16,12 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.PreviewDynamicColors
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
-import kotlin.random.Random
 
 @Composable
-fun ObjectCard(
+fun AdCard(
     title: String,
     description: String,
     modifier: Modifier = Modifier
@@ -32,14 +30,14 @@ fun ObjectCard(
         shape = MaterialTheme.shapes.large
     ) {
         Image(
-           painter =  rememberAsyncImagePainter(
-               model = "https://source.unsplash.com/random/300x200/?img=1"
-           ),
-           contentDescription = null,
-           modifier = Modifier
-               .clip(MaterialTheme.shapes.large)
-               .fillMaxWidth()
-               .aspectRatio(3f / 2f)
+            painter =  rememberAsyncImagePainter(
+                model = "https://source.unsplash.com/random/300x200/?img=1"
+            ),
+            contentDescription = null,
+            modifier = Modifier
+                .clip(MaterialTheme.shapes.large)
+                .fillMaxWidth()
+                .aspectRatio(3f / 2f)
         )
         Column(
             Modifier.padding(16.dp)
@@ -59,6 +57,6 @@ fun ObjectCard(
 
 @PreviewDynamicColors
 @Composable
-fun ObjectCardPreview(){
-    ObjectCard(title = "asd", description = "bhgjh")
+fun AdCardPreview(){
+    AdCard(title = "Title", description = "description")
 }

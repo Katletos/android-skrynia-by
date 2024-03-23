@@ -33,8 +33,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import com.example.lab.ui.ObjectCard
+import com.example.lab.ad.AdCard
 import com.example.lab.ui.theme.LabTheme
+import com.google.firebase.auth.FirebaseAuth
 
 data class BottomNavigationItem(
     val title: String,
@@ -46,8 +47,19 @@ data class BottomNavigationItem(
 
 @ExperimentalMaterial3Api
 class MainActivity : ComponentActivity() {
+    private lateinit var auth: FirebaseAuth
+
+    override fun onStart() {
+        super.onStart()
+
+        val currentUser = auth.currentUser
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        auth = FirebaseAuth.getInstance()
+
         setContent {
             LabTheme {
                 val items = listOf(
@@ -134,7 +146,7 @@ class MainActivity : ComponentActivity() {
                     ) { values ->
                         LazyColumn(contentPadding = values)  {
                             items(20) {
-                                ObjectCard(
+                                AdCard(
                                     title = "asd",
                                     description = "asd",
                                     Modifier.padding(16.dp)

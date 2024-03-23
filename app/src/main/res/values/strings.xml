@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">lab</string>
+    <string name="login">login</string>
+    <string name="enter_login">Enter your login</string>
+    <string name="password">Password</string>
+    <string name="enter_password">Enter your password</string>
 </resources>
